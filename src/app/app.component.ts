@@ -35,6 +35,14 @@ export class AppComponent {
     0: 'red', // flash red? + 2 buzzes
   };
 
+  timeLeftTopics = {
+    90: 'green',
+    60: 'yellow',
+    30: 'red',
+    15: 'red',
+    0: 'red',
+  };
+
   colorSignifigance = {
     green: 'green',
     yellow: 'yellow',
@@ -84,15 +92,17 @@ export class AppComponent {
       return;
     }
 
-    if (
-      remainingSeconds >
-      Math.max(...Object.keys(this.timeLeftSpeech).map(Number))
-    ) {
+    const timeLeft =
+      this.selectedPreset === 'table_topics'
+        ? this.timeLeftTopics
+        : this.timeLeftSpeech;
+
+    if (remainingSeconds > Math.max(...Object.keys(timeLeft).map(Number))) {
       this.backgroundColor = 'white';
       return;
     }
 
-    for (const [time, color] of Object.entries(this.timeLeftSpeech)) {
+    for (const [time, color] of Object.entries(timeLeft)) {
       if (remainingSeconds <= +time && this.seconds > 0) {
         this.backgroundColor = color;
         break;
