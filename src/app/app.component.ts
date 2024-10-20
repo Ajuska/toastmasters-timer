@@ -108,7 +108,7 @@ export class AppComponent {
     const target = event.target as HTMLSelectElement;
     this.selectedPreset = target.value as SpeechTypes;
     this.userMinutes = this.speechPresets[this.selectedPreset] ?? 0;
-    this.updateBackgroundColor();
+    this.resetTimer();
   }
 
   ngOnDestroy() {
