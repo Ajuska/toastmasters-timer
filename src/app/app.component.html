@@ -3,10 +3,15 @@
 </style>
 
 <main class="main">
+  <div [ngStyle]="{'background-color': backgroundColor}">
+
   <h1>Timer: {{ seconds }} seconds</h1>
+  <label for="userMinutes">Enter minutes:</label>
+  <input type="number" [(ngModel)]="userMinutes" (ngModelChange)="updateBackgroundColor()" [disabled]="isDisabled"  placeholder="Enter minutes" />
   <button (click)="startTimer()">Start Timer</button>
   <button (click)="stopTimer()">Stop Timer</button>
   <button (click)="resetTimer()">Reset Timer</button>
+  </div>
 </main>
 
 <router-outlet />
