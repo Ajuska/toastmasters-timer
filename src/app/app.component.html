@@ -1,27 +1,53 @@
-
-<style>
-</style>
+<style></style>
 
 <main class="main">
   <label for="userMinutes">Enter minutes:</label>
-  <input type="number" [(ngModel)]="userMinutes" (ngModelChange)="updateBackgroundColor()" [disabled]="isDisabled"  placeholder="Enter minutes" required #userMinutesInput="ngModel"  />
-  <div *ngIf="userMinutesInput.invalid && userMinutesInput.touched" class="error">
+  <input
+    type="number"
+    [(ngModel)]="userMinutes"
+    (ngModelChange)="updateBackgroundColor()"
+    [disabled]="isDisabled"
+    placeholder="Enter minutes"
+    required
+    #userMinutesInput="ngModel"
+  />
+  <div
+    *ngIf="userMinutesInput.invalid && userMinutesInput.touched"
+    class="error"
+  >
     This field is required.
   </div>
   <label for="speechPreset">Select a speech time preset:</label>
-  <select id="speechPreset" [(ngModel)]="selectedPreset" (change)="onPresetChange($event)" [disabled]="isDisabled">
-    <option *ngFor="let preset of speechPresets | keyvalue" [value]="preset.key">{{ preset.key | capitalize  }}</option>
+  <select
+    id="speechPreset"
+    [(ngModel)]="selectedPreset"
+    (change)="onPresetChange($event)"
+    [disabled]="isDisabled"
+  >
+    <option
+      *ngFor="let preset of speechPresets | keyvalue"
+      [value]="preset.key"
+    >
+      {{ preset.key | capitalize }}
+    </option>
   </select>
   <button (click)="startTimer()">Start Timer</button>
   <button (click)="stopTimer()">Stop Timer</button>
   <button (click)="resetTimer()">Reset Timer</button>
-  <button (click)="toggleSeconds()">{{ displaySeconds ? 'Hide' : 'Show' }} Seconds</button>
-  <h1 >Is recording: {{ timer ? 'YES' : 'NO' }}  </h1>
-  <div [ngStyle]="{'background-color': backgroundColor, width: '100vw', height: '100vh', padding: '1rem'}">
+  <button (click)="toggleSeconds()">
+    {{ displaySeconds ? "Hide" : "Show" }} Seconds
+  </button>
+  <h1>Is recording: {{ timer ? "YES" : "NO" }}</h1>
+  <div
+    [ngStyle]="{
+      'background-color': backgroundColor,
+      width: '100vw',
+      height: '100vh',
+      padding: '1rem'
+    }"
+  >
     <h1 *ngIf="displaySeconds">Timer: {{ seconds }} seconds</h1>
   </div>
-
-
 </main>
 
 <router-outlet />
