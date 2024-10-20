@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterOutlet } from '@angular/router';
@@ -126,6 +126,21 @@ export class AppComponent {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (this.timer) {
+        this.stopTimer();
+      } else {
+        this.startTimer();
+      }
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
+      this.resetTimer();
+    }
   }
 
   ngOnDestroy() {
