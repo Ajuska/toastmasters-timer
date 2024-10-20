@@ -26,6 +26,7 @@ export class AppComponent {
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
   selectedPreset: SpeechTypes = '';
+  isStartTimerTouched: boolean = false;
 
   timeLeftSpeech = {
     150: 'green',
@@ -58,6 +59,7 @@ export class AppComponent {
   };
 
   startTimer() {
+    this.isStartTimerTouched = true;
     if (!this.userMinutes) {
       return;
     }

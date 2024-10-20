@@ -5,17 +5,17 @@
   <input
     type="number"
     [(ngModel)]="userMinutes"
-    (ngModelChange)="updateBackgroundColor()"
     [disabled]="isDisabled"
     placeholder="Enter minutes"
     required
     #userMinutesInput="ngModel"
+    min="1"
   />
-  <div
-    *ngIf="userMinutesInput.invalid && userMinutesInput.touched"
-    class="error"
-  >
-    This field is required.
+  <div *ngIf="userMinutesInput.invalid && isStartTimerTouched" class="error">
+    <span *ngIf="userMinutes === 0; else elseBlock" class="error">
+      Please enter a number greater than 0.
+    </span>
+    <ng-template #elseBlock>This field is required.</ng-template>
   </div>
   <label for="speechPreset">Select a speech time preset:</label>
   <select
