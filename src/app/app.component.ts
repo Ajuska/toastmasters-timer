@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CapitalizePipe } from './capitalize.pipe';
 
+type SpeechTypes =
+  | 'icebreaker'
+  | 'standard'
+  | 'table_topics'
+  | 'evaluation'
+  | '';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule],
+  imports: [RouterOutlet, FormsModule, CommonModule, CapitalizePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })
@@ -18,6 +25,7 @@ export class AppComponent {
   backgroundColor: string = 'white';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
+  selectedPreset: SpeechTypes = '';
 
   timeLeftSpeech = {
     150: 'green',
@@ -31,6 +39,14 @@ export class AppComponent {
     green: 'green',
     yellow: 'yellow',
     red: 'red',
+  };
+
+  speechPresets: { [key in SpeechTypes]: number | undefined } = {
+    icebreaker: 6,
+    standard: 7,
+    table_topics: 2,
+    evaluation: 3,
+    '': undefined,
   };
 
   startTimer() {
@@ -86,6 +102,13 @@ export class AppComponent {
 
   toggleSeconds() {
     this.displaySeconds = !this.displaySeconds;
+  }
+
+  onPresetChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.selectedPreset = target.value as SpeechTypes;
+    this.userMinutes = this.speechPresets[this.selectedPreset] ?? 0;
+    this.updateBackgroundColor();
   }
 
   ngOnDestroy() {
