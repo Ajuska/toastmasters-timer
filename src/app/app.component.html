@@ -46,7 +46,7 @@
       padding: '1rem'
     }"
   >
-    <h1 *ngIf="displaySeconds">Timer: {{ seconds }} seconds</h1>
+    <h1 *ngIf="displaySeconds">Timer: {{ formatTime(seconds) }}</h1>
   </div>
 </main>
 
