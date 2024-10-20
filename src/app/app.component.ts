@@ -21,7 +21,7 @@ type SpeechTypes =
 export class AppComponent {
   timer: number | NodeJS.Timeout | undefined;
   seconds: number = 0;
-  userMinutes: number = 2;
+  userMinutes: number | null = null;
   backgroundColor: string = 'white';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
@@ -49,15 +49,19 @@ export class AppComponent {
     red: 'red',
   };
 
-  speechPresets: { [key in SpeechTypes]: number | undefined } = {
+  speechPresets: { [key in SpeechTypes]: number | null } = {
     icebreaker: 6,
     standard: 7,
     table_topics: 2,
     evaluation: 3,
-    '': undefined,
+    '': null,
   };
 
   startTimer() {
+    if (!this.userMinutes) {
+      return;
+    }
+
     if (!this.timer) {
       this.isDisabled = true;
       this.timer = setInterval(() => {
@@ -68,6 +72,9 @@ export class AppComponent {
   }
 
   stopTimer() {
+    if (!this.userMinutes) {
+      return;
+    }
     if (this.timer) {
       clearInterval(this.timer);
       this.isDisabled = false;
@@ -82,6 +89,10 @@ export class AppComponent {
   }
 
   updateBackgroundColor() {
+    if (!this.userMinutes) {
+      return;
+    }
+
     // add 30s to keep the number positive in 'time left' rules
     const totalSeconds = this.userMinutes * 60 + 30;
     const remainingSeconds = totalSeconds - this.seconds;
@@ -118,7 +129,7 @@ export class AppComponent {
   onPresetChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     this.selectedPreset = target.value as SpeechTypes;
-    this.userMinutes = this.speechPresets[this.selectedPreset] ?? 0;
+    this.userMinutes = this.speechPresets[this.selectedPreset];
     this.resetTimer();
   }
 
