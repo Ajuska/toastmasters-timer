@@ -14,9 +14,10 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   timer: number | NodeJS.Timeout | undefined;
   seconds: number = 0;
-  userMinutes: number = 0;
+  userMinutes: number = 2;
   backgroundColor: string = 'white';
   isDisabled: boolean = false;
+  displaySeconds: boolean = true;
 
   timeLeftSpeech = {
     150: 'green',
@@ -81,6 +82,10 @@ export class AppComponent {
         break;
       }
     }
+  }
+
+  toggleSeconds() {
+    this.displaySeconds = !this.displaySeconds;
   }
 
   ngOnDestroy() {
