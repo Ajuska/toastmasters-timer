@@ -82,7 +82,8 @@ export class AppComponent {
   }
 
   updateBackgroundColor() {
-    const totalSeconds = this.userMinutes * 60;
+    // add 30s to keep the number positive in 'time left' rules
+    const totalSeconds = this.userMinutes * 60 + 30;
     const remainingSeconds = totalSeconds - this.seconds;
 
     if (this.userMinutes <= 0) {
