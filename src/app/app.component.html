@@ -38,6 +38,9 @@
   </button>
   <h1>Is recording: {{ timer ? "YES" : "NO" }}</h1>
   <div
+    [ngClass]="{
+      'flash': shouldFlash,
+    }"
     [ngStyle]="{
       'background-color': colorMapping[backgroundColor],
       width: '100vw',

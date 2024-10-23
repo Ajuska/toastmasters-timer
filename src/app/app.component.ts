@@ -34,6 +34,7 @@ export class AppComponent {
   displaySeconds: boolean = true;
   selectedPreset: SpeechTypes = '';
   isStartTimerTouched: boolean = false;
+  flash: boolean = true;
 
   // TODO finetune colors
   colorMapping: { [key: string]: string } = {
@@ -73,6 +74,12 @@ export class AppComponent {
     '': null,
   };
 
+  get shouldFlash(): boolean {
+    return (
+      ['darkRed', 'darkerRed'].includes(this.backgroundColor) && this.flash
+    );
+  }
+
   startTimer() {
     this.isStartTimerTouched = true;
     if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
@@ -81,6 +88,7 @@ export class AppComponent {
 
     if (!this.timer) {
       this.isDisabled = true;
+      this.flash = true;
       this.timer = setInterval(() => {
         this.seconds++;
         this.updateBackgroundColor();
@@ -96,6 +104,7 @@ export class AppComponent {
       clearInterval(this.timer);
       this.isDisabled = false;
       this.timer = undefined;
+      this.flash = false;
     }
   }
 
@@ -103,6 +112,7 @@ export class AppComponent {
     this.stopTimer();
     this.seconds = 0;
     this.backgroundColor = 'white';
+    this.flash = true;
   }
 
   updateBackgroundColor() {
