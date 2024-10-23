@@ -4,18 +4,17 @@
   <label for="userMinutes">Enter minutes:</label>
   <input
     type="number"
-    [(ngModel)]="userMinutes"
-    [disabled]="isDisabled"
     placeholder="Enter minutes"
-    required
+    [(ngModel)]="userMinutes"
     #userMinutesInput="ngModel"
+    [disabled]="isDisabled"
     min="1"
+    step="1"
+    required
+    appIntegerValidator
   />
   <div *ngIf="userMinutesInput.invalid && isStartTimerTouched" class="error">
-    <span *ngIf="userMinutes === 0; else elseBlock" class="error">
-      Please enter a number greater than 0.
-    </span>
-    <ng-template #elseBlock>This field is required.</ng-template>
+    {{ userMinutesInput.errors?.['message']}}
   </div>
   <label for="speechPreset">Select a speech time preset:</label>
   <select

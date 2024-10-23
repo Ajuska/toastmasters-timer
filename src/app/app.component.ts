@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CapitalizePipe } from './capitalize.pipe';
+import { IntegerValidatorDirective } from './integer-validator.directive';
 
 type SpeechTypes =
   | 'icebreaker'
@@ -14,7 +15,13 @@ type SpeechTypes =
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule, CapitalizePipe],
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    CommonModule,
+    CapitalizePipe,
+    IntegerValidatorDirective,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })
@@ -60,7 +67,7 @@ export class AppComponent {
 
   startTimer() {
     this.isStartTimerTouched = true;
-    if (!this.userMinutes) {
+    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
       return;
     }
 
@@ -74,7 +81,7 @@ export class AppComponent {
   }
 
   stopTimer() {
-    if (!this.userMinutes) {
+    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
       return;
     }
     if (this.timer) {
@@ -91,7 +98,7 @@ export class AppComponent {
   }
 
   updateBackgroundColor() {
-    if (!this.userMinutes) {
+    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
       return;
     }
 
