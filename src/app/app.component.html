@@ -39,10 +39,11 @@
   <h1>Is recording: {{ timer ? "YES" : "NO" }}</h1>
   <div
     [ngStyle]="{
-      'background-color': backgroundColor,
+      'background-color': colorMapping[backgroundColor],
       width: '100vw',
       height: '100vh',
-      padding: '1rem'
+      padding: '1rem',
+      'box-shadow': getBoxShadow(),
     }"
   >
     <h1 *ngIf="displaySeconds">Timer: {{ formatTime(seconds) }}</h1>

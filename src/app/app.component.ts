@@ -35,26 +35,34 @@ export class AppComponent {
   selectedPreset: SpeechTypes = '';
   isStartTimerTouched: boolean = false;
 
+  // TODO finetune colors
+  colorMapping: { [key: string]: string } = {
+    green: 'green',
+    yellow: 'yellow',
+    red: 'red',
+    darkRed: 'red',
+    darkerRed: 'red',
+  };
+
+  borderConfig: { [key: string]: { color: string; thickness: string } } = {
+    darkRed: { color: 'black', thickness: '10px' },
+    darkerRed: { color: 'black', thickness: '20px' },
+  };
+
   timeLeftSpeech = {
     150: 'green',
     90: 'yellow',
     30: 'red',
-    15: 'red', // add exlamation point? + buzz
-    0: 'red', // flash red? + 2 buzzes
+    15: 'darkRed', // TODO add buzz sound too
+    0: 'darkerRed', // TODO add buzz sound too
   };
 
   timeLeftTopics = {
     90: 'green',
     60: 'yellow',
     30: 'red',
-    15: 'red',
-    0: 'red',
-  };
-
-  colorSignifigance = {
-    green: 'green',
-    yellow: 'yellow',
-    red: 'red',
+    15: 'darkRed',
+    0: 'darkerRed',
   };
 
   speechPresets: { [key in SpeechTypes]: number | null } = {
@@ -146,6 +154,15 @@ export class AppComponent {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  }
+
+  getBoxShadow(): string {
+    const borderConfig = this.borderConfig[this.backgroundColor];
+    if (!borderConfig) {
+      return '';
+    }
+
+    return `inset 0px 0px 0px ${borderConfig.thickness} ${borderConfig.color}`;
   }
 
   @HostListener('window:keydown', ['$event'])
