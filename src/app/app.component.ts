@@ -164,6 +164,11 @@ export class AppComponent {
     this.resetTimer();
   }
 
+  onTimeInputChange(): void {
+    this.selectedPreset = '';
+    this.resetTimer();
+  }
+
   formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;

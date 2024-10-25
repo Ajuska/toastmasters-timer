@@ -8,6 +8,7 @@
     [(ngModel)]="userMinutes"
     #userMinutesInput="ngModel"
     [disabled]="isDisabled"
+    (change)="onTimeInputChange()"
     min="1"
     step="1"
     required
