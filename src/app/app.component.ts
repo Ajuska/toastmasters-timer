@@ -8,9 +8,11 @@ import { IntegerValidatorDirective } from './integer-validator.directive';
 
 type SpeechTypes =
   | 'icebreaker'
-  | 'standard'
+  | 'standard_speech'
   | 'table_topics'
-  | 'evaluation'
+  | 'speech_evaluation'
+  | 'general_evaluation'
+  | 'gramarian'
   | '';
 @Component({
   selector: 'app-root',
@@ -68,9 +70,11 @@ export class AppComponent {
 
   speechPresets: { [key in SpeechTypes]: number | null } = {
     icebreaker: 6,
-    standard: 7,
+    standard_speech: 7,
     table_topics: 2,
-    evaluation: 3,
+    speech_evaluation: 3,
+    general_evaluation: 7,
+    gramarian: 3,
     '': null,
   };
 
