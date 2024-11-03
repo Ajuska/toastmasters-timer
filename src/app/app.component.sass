@@ -1,3 +1,5 @@
+$red: #f0506e
+
 @keyframes flash
   0%
     opacity: 1
@@ -59,10 +61,17 @@
 .form--input
   width: 100px
 
+.form--input--error
+  border-color: $red
+  color: $red
+
+.form--input--error:focus-visible
+  outline: auto
+
 .form--error
   position: absolute
   bottom: 0
-  color: red
+  color: $red
 
 .rules
   display: flex

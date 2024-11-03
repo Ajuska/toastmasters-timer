@@ -76,12 +76,17 @@
         <label for="userMinutes">Enter minutes</label>
         <input
           type="number"
-          placeholder="Enter minutes"
+          placeholder="Minutes"
           class="form--input"
+          [ngClass]="{
+            'form--input--error':
+              userMinutesInput.invalid && isStartTimerTouched
+          }"
           [(ngModel)]="userMinutes"
           #userMinutesInput="ngModel"
           [disabled]="isDisabled"
           (change)="onTimeInputChange()"
+          id="userMinutes"
           min="1"
           step="1"
           required
@@ -129,9 +134,9 @@
         'box-shadow': getBoxShadow(),
       }"
     ></div>
-    <h3 *ngIf="displaySeconds" class="timer">
+    <p *ngIf="displaySeconds" class="timer">
       {{ formatTime(seconds) }}
-    </h3>
+    </p>
   </div>
 </main>
 
