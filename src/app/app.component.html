@@ -87,12 +87,18 @@
         {{ userMinutesInput.errors?.['message']}}
       </div>
     </div>
-    <button (click)="startTimer()">Start Timer</button>
-    <button (click)="stopTimer()">Stop Timer</button>
-    <button (click)="resetTimer()">Reset Timer</button>
-    <button (click)="toggleSeconds()">
-      {{ displaySeconds ? "Hide" : "Show" }} Time
-    </button>
+    <div class="controls">
+      <button (click)="startTimer()" class="controls--button">
+        Start Timer
+      </button>
+      <button (click)="stopTimer()" class="controls--button">Stop Timer</button>
+      <button (click)="resetTimer()" class="controls--button">
+        Reset Timer
+      </button>
+      <button (click)="toggleSeconds()" class="controls--button">
+        {{ displaySeconds ? "Hide" : "Show" }} Time
+      </button>
+    </div>
     <h2>Is recording: {{ timer ? "YES" : "NO" }}</h2>
   </div>
   <div class="content">

@@ -77,3 +77,19 @@ $red: #f0506e
 
 .rules--column
   font-size: 0.8rem
+
+.controls
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 1rem
+
+.controls--button
+  padding: 0.5rem 1rem
+  border: 1px solid #ddd
+  border-radius: 0.3rem
+  background-color: #6cbfff
+  cursor: pointer
+  font-weight: bold
+
+  &:hover
+    background-color: darken(#6cbfff, 10%)
