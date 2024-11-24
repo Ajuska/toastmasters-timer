@@ -88,13 +88,13 @@
       </div>
     </div>
     <div class="controls">
-      <button (click)="startOrStopAction()" class="controls--button">
+      <button (click)="startOrStopAction()" class="controls--button full">
         {{ timer ? "Stop" : "Start" }} Timer
       </button>
-      <button (click)="resetTimer()" class="controls--button">
+      <button (click)="resetTimer()" class="controls--button secondary">
         Reset Timer
       </button>
-      <button (click)="toggleSeconds()" class="controls--button">
+      <button (click)="toggleSeconds()" class="controls--button secondary">
         {{ displaySeconds ? "Hide" : "Show" }} Time
       </button>
     </div>

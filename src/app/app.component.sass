@@ -80,7 +80,7 @@ $red: #f0506e
 .controls
   display: grid
   grid-template-columns: repeat(2, 1fr)
-  gap: 1rem
+  gap: 0.7rem
 
 .controls--button
   padding: 0.5rem 1rem
@@ -89,6 +89,17 @@ $red: #f0506e
   background-color: #6cbfff
   cursor: pointer
   font-weight: bold
+  text-align: center
 
   &:hover
     background-color: darken(#6cbfff, 10%)
+
+  &.secondary
+    background-color: #f4f4f4
+    color: #333
+
+    &:hover
+      background-color: darken(#f4f4f4, 10%)
+
+  &.full
+    grid-column: span 2
