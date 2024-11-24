@@ -111,6 +111,14 @@ export class AppComponent {
     }
   }
 
+  startOrStopAction(): void {
+    if (this.timer) {
+      this.stopTimer();
+    } else {
+      this.startTimer();
+    }
+  }
+
   resetTimer() {
     this.stopTimer();
     this.seconds = 0;
@@ -187,11 +195,7 @@ export class AppComponent {
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      if (this.timer) {
-        this.stopTimer();
-      } else {
-        this.startTimer();
-      }
+      this.startOrStopAction();
     } else if (event.key === 'Escape') {
       event.preventDefault();
       this.resetTimer();

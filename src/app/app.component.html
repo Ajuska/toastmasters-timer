@@ -88,10 +88,9 @@
       </div>
     </div>
     <div class="controls">
-      <button (click)="startTimer()" class="controls--button">
-        Start Timer
+      <button (click)="startOrStopAction()" class="controls--button">
+        {{ timer ? "Stop" : "Start" }} Timer
       </button>
-      <button (click)="stopTimer()" class="controls--button">Stop Timer</button>
       <button (click)="resetTimer()" class="controls--button">
         Reset Timer
       </button>
