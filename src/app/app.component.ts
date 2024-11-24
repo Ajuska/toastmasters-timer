@@ -38,7 +38,6 @@ export class AppComponent {
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
 
-  // TODO finetune colors
   colorMapping: { [key: string]: string } = {
     green: 'green',
     yellow: 'yellow',
@@ -56,8 +55,8 @@ export class AppComponent {
     150: 'green',
     90: 'yellow',
     30: 'red',
-    15: 'darkRed', // TODO add buzz sound too
-    0: 'darkerRed', // TODO add buzz sound too
+    15: 'darkRed',
+    0: 'darkerRed',
   };
 
   timeLeftTopics = {
