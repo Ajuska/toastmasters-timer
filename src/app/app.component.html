@@ -99,6 +99,12 @@
       </button>
     </div>
     <h2>Is recording: {{ timer ? "YES" : "NO" }}</h2>
+    <img
+      [src]="timer ? 'time.gif' : 'time.svg'"
+      alt="Timer GIF"
+      [style.width]="timer ? '42px' : '32px'"
+      [style.padding]="timer ? '0px' : '4.5px'"
+    />
   </div>
   <div class="content">
     <div
