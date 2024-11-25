@@ -2,10 +2,82 @@
 
 <main class="main">
   <div class="sidebar">
-    <h1>Toastmasters timer</h1>
+    <div class="header">
+      <h1>Toastmasters timer</h1>
+      <img
+        [src]="timer ? 'time.gif' : 'time.svg'"
+        alt="Timer GIF"
+        [style.width]="timer ? '39px' : '30px'"
+        [style.padding]="timer ? '0px' : '4.5px'"
+      />
+    </div>
+    <div>
+      <div class="form">
+        <div class="form--group">
+          <label for="userMinutes">Enter minutes</label>
+          <input
+            type="number"
+            placeholder="Minutes"
+            class="form--input"
+            [ngClass]="{
+              'form--input--error':
+                userMinutesInput.invalid && isStartTimerTouched
+            }"
+            [(ngModel)]="userMinutes"
+            #userMinutesInput="ngModel"
+            [disabled]="isDisabled"
+            (change)="onTimeInputChange()"
+            id="userMinutes"
+            min="1"
+            step="1"
+            required
+            appIntegerValidator
+          />
+        </div>
+        <p>OR</p>
+        <div class="form--group">
+          <label for="speechPreset">Select preset</label>
+          <select
+            id="speechPreset"
+            [(ngModel)]="selectedPreset"
+            (change)="onPresetChange($event)"
+            [disabled]="isDisabled"
+          >
+            <option
+              *ngFor="let preset of speechPresets | keyvalue"
+              [value]="preset.key"
+            >
+              {{ preset.key | capitalize }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="userMinutesInput.invalid && isStartTimerTouched"
+          class="form--error"
+        >
+          {{ userMinutesInput.errors?.['message']}}
+        </div>
+      </div>
+      <div class="controls">
+        <button (click)="startOrStopAction()" class="controls--button full">
+          {{ timer ? "Stop" : "Start" }} Timer
+        </button>
+        <button (click)="resetTimer()" class="controls--button secondary">
+          Reset Timer
+        </button>
+        <button (click)="toggleSeconds()" class="controls--button secondary">
+          {{ displaySeconds ? "Hide" : "Show" }} Time
+        </button>
+      </div>
+    </div>
     <i>
       This tool is for tracking time when giving or practising toastmasters
       speeches or evaluations
+    </i>
+    <h2>Controls</h2>
+    <i>
+      Choose speech time. Use buttons to control the timer. Alternatively use
+      enter or spacebar keys to start/stop. Use escape key to reset it.
     </i>
     <h2>Rules</h2>
     <i>
@@ -36,75 +108,6 @@
       </ul>
     </div>
     <i>Choose "Table topics" from preset to use table topics rule.</i>
-    <h2>Controls</h2>
-    <i>
-      Choose speech time. Use buttons to control the timer. Alternatively use
-      enter or spacebar keys to start/stop. Use escape key to reset it.
-    </i>
-    <div class="form">
-      <div class="form--group">
-        <label for="userMinutes">Enter minutes</label>
-        <input
-          type="number"
-          placeholder="Minutes"
-          class="form--input"
-          [ngClass]="{
-            'form--input--error':
-              userMinutesInput.invalid && isStartTimerTouched
-          }"
-          [(ngModel)]="userMinutes"
-          #userMinutesInput="ngModel"
-          [disabled]="isDisabled"
-          (change)="onTimeInputChange()"
-          id="userMinutes"
-          min="1"
-          step="1"
-          required
-          appIntegerValidator
-        />
-      </div>
-      <p>OR</p>
-      <div class="form--group">
-        <label for="speechPreset">Select preset</label>
-        <select
-          id="speechPreset"
-          [(ngModel)]="selectedPreset"
-          (change)="onPresetChange($event)"
-          [disabled]="isDisabled"
-        >
-          <option
-            *ngFor="let preset of speechPresets | keyvalue"
-            [value]="preset.key"
-          >
-            {{ preset.key | capitalize }}
-          </option>
-        </select>
-      </div>
-      <div
-        *ngIf="userMinutesInput.invalid && isStartTimerTouched"
-        class="form--error"
-      >
-        {{ userMinutesInput.errors?.['message']}}
-      </div>
-    </div>
-    <div class="controls">
-      <button (click)="startOrStopAction()" class="controls--button full">
-        {{ timer ? "Stop" : "Start" }} Timer
-      </button>
-      <button (click)="resetTimer()" class="controls--button secondary">
-        Reset Timer
-      </button>
-      <button (click)="toggleSeconds()" class="controls--button secondary">
-        {{ displaySeconds ? "Hide" : "Show" }} Time
-      </button>
-    </div>
-    <h2>Is recording: {{ timer ? "YES" : "NO" }}</h2>
-    <img
-      [src]="timer ? 'time.gif' : 'time.svg'"
-      alt="Timer GIF"
-      [style.width]="timer ? '42px' : '32px'"
-      [style.padding]="timer ? '0px' : '4.5px'"
-    />
   </div>
   <div class="content">
     <div
