@@ -199,7 +199,7 @@ export class AppComponent {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === ' ') {
       event.preventDefault();
       this.startOrStopAction();
     } else if (event.key === 'Escape') {
