@@ -14,6 +14,9 @@ type SpeechTypes =
   | 'general_evaluation'
   | 'gramarian'
   | '';
+
+type Colors = 'green' | 'yellow' | 'red' | 'darkRed' | 'darkerRed' | 'rose';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -31,27 +34,30 @@ export class AppComponent {
   timer: number | NodeJS.Timeout | undefined;
   seconds: number = 0;
   userMinutes: number | null = null;
-  backgroundColor: string = 'white';
+  backgroundColor: Colors = 'rose';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
   selectedPreset: SpeechTypes = '';
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
 
-  colorMapping: { [key: string]: string } = {
+  colorMapping: { [key in Colors]: string } = {
     green: 'var(--color-green)',
     yellow: 'var(--color-yellow)',
     red: 'var(--color-red)',
     darkRed: 'var(--color-red)',
     darkerRed: 'var(--color-red)',
+    rose: 'var(--color-rose)',
   };
 
-  borderConfig: { [key: string]: { color: string; thickness: string } } = {
+  borderConfig: Partial<{
+    [key in Colors]: { color: string; thickness: string };
+  }> = {
     darkRed: { color: 'black', thickness: '10px' },
     darkerRed: { color: 'black', thickness: '20px' },
   };
 
-  timeLeftSpeech = {
+  timeLeftSpeech: { [key: number]: Colors } = {
     150: 'green',
     90: 'yellow',
     30: 'red',
@@ -59,7 +65,7 @@ export class AppComponent {
     0: 'darkerRed',
   };
 
-  timeLeftTopics = {
+  timeLeftTopics: { [key: number]: Colors } = {
     90: 'green',
     60: 'yellow',
     30: 'red',
@@ -122,7 +128,7 @@ export class AppComponent {
   resetTimer() {
     this.stopTimer();
     this.seconds = 0;
-    this.backgroundColor = 'white';
+    this.backgroundColor = 'rose';
     this.flash = true;
   }
 
@@ -138,7 +144,7 @@ export class AppComponent {
     if (this.userMinutes <= 0) {
       this.stopTimer();
       this.seconds = 0;
-      this.backgroundColor = 'white';
+      this.backgroundColor = 'rose';
       return;
     }
 
@@ -148,7 +154,7 @@ export class AppComponent {
         : this.timeLeftSpeech;
 
     if (remainingSeconds > Math.max(...Object.keys(timeLeft).map(Number))) {
-      this.backgroundColor = 'white';
+      this.backgroundColor = 'rose';
       return;
     }
 
