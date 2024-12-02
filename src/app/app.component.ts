@@ -39,11 +39,11 @@ export class AppComponent {
   flash: boolean = true;
 
   colorMapping: { [key: string]: string } = {
-    green: 'green',
-    yellow: 'yellow',
-    red: 'red',
-    darkRed: 'red',
-    darkerRed: 'red',
+    green: 'var(--color-green)',
+    yellow: 'var(--color-yellow)',
+    red: 'var(--color-red)',
+    darkRed: 'var(--color-red)',
+    darkerRed: 'var(--color-red)',
   };
 
   borderConfig: { [key: string]: { color: string; thickness: string } } = {
