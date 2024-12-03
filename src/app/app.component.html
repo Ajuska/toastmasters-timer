@@ -43,7 +43,7 @@
         </div>
         <p>OR</p>
         <div class="form--group">
-          <label for="speechPreset">Select preset</label>
+          <label for="speechPreset">Select a preset</label>
           <select
             id="speechPreset"
             [(ngModel)]="selectedPreset"
@@ -77,20 +77,21 @@
         </button>
       </div>
     </div>
-    <i>
-      This tool is for tracking time when giving or practising toastmasters
-      speeches or evaluations
-    </i>
-    <h2>Controls</h2>
-    <i>
-      Choose speech time. Use buttons to control the timer. Alternatively use
-      spacebar key to start/stop. Use escape key to reset it.
-    </i>
-    <h2>Rules</h2>
-    <i>
-      There are two sets of rules. First column applies to table topics, second
-      one to speeches and evaluations. At
-    </i>
+    <p>
+      A simple tool for tracking time during speeches, evaluations or practice
+      sessions.
+    </p>
+    <h2>How to use</h2>
+    <p>
+      Enter the duration in minutes or select a preset to begin. Use the
+      spacebar or the start/stop button to control the timer and reset it with
+      the reset button or the Esc key.
+    </p>
+    <h2>Timing rules</h2>
+    <p>
+      There are two sets of rules. The first applies to table topics and the
+      second to speeches and evaluations:
+    </p>
     <div class="rules">
       <ul class="rules--column">
         <li>1min</li>
@@ -114,7 +115,7 @@
         <li>over, screen pulses</li>
       </ul>
     </div>
-    <i>Choose "Table topics" from preset to use table topics rule.</i>
+    <p>Select "Table topics" preset for table topics rule to apply.</p>
   </div>
   <div class="content">
     <div
