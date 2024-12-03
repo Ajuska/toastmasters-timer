@@ -50,13 +50,6 @@ export class AppComponent {
     rose: 'var(--color-rose)',
   };
 
-  borderConfig: Partial<{
-    [key in Colors]: { color: string; thickness: string };
-  }> = {
-    darkRed: { color: 'black', thickness: '10px' },
-    darkerRed: { color: 'black', thickness: '20px' },
-  };
-
   timeLeftSpeech: { [key: number]: Colors } = {
     150: 'green',
     90: 'yellow',
@@ -84,9 +77,7 @@ export class AppComponent {
   };
 
   get shouldFlash(): boolean {
-    return (
-      ['darkRed', 'darkerRed'].includes(this.backgroundColor) && this.flash
-    );
+    return this.backgroundColor === 'darkerRed' && this.flash;
   }
 
   startTimer() {
@@ -189,12 +180,11 @@ export class AppComponent {
   }
 
   getBoxShadow(): string {
-    const borderConfig = this.borderConfig[this.backgroundColor];
-    if (!borderConfig) {
+    if (!['darkRed', 'darkerRed'].includes(this.backgroundColor)) {
       return '';
     }
 
-    return `inset 0px 0px 0px ${borderConfig.thickness} ${borderConfig.color}`;
+    return `inset 0px 0px 0px 50px var(--color-black)`;
   }
 
   @HostListener('window:keydown', ['$event'])
