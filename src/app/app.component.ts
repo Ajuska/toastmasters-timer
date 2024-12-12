@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { clearInterval, setInterval } from 'worker-timers';
 
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ type Colors = 'green' | 'yellow' | 'red' | 'darkRed' | 'darkerRed' | 'rose';
   styleUrl: './app.component.sass',
 })
 export class AppComponent {
-  timer: number | NodeJS.Timeout | undefined;
+  timer: number | undefined;
   seconds: number = 0;
   userMinutes: number | null = null;
   backgroundColor: Colors = 'rose';
