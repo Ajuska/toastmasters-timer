@@ -41,6 +41,7 @@ export class AppComponent {
   selectedPreset: SpeechTypes = '';
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
+  wakeLock: any = null;
 
   colorMapping: { [key in Colors]: string } = {
     green: 'var(--color-green)',
@@ -94,6 +95,7 @@ export class AppComponent {
         this.seconds++;
         this.updateBackgroundColor();
       }, 1000);
+      this.startWakeLock();
     }
   }
 
@@ -106,6 +108,7 @@ export class AppComponent {
       this.isDisabled = false;
       this.timer = undefined;
       this.flash = false;
+      this.stopWakeLock();
     }
   }
 
@@ -186,6 +189,20 @@ export class AppComponent {
     }
 
     return `inset 0px 0px 0px 50px var(--color-black)`;
+  }
+
+  async startWakeLock() {
+    if ('wakeLock' in navigator) {
+      this.wakeLock = await navigator.wakeLock.request('screen');
+    }
+  }
+
+  stopWakeLock() {
+    if (this.wakeLock !== null) {
+      this.wakeLock.release().then(() => {
+        this.wakeLock = null;
+      });
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
