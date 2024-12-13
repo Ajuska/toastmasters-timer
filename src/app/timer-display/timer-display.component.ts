@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Colors, ColorMappingType } from '../types';
 @Component({
   selector: 'app-timer-display',
   standalone: true,
@@ -12,8 +12,8 @@ export class TimerDisplayComponent {
   @Input() seconds: number = 0;
   @Input() flash: boolean = true;
   @Input() displaySeconds: boolean = true;
-  @Input() backgroundColor: string = 'rose';
-  @Input() colorMapping: { [key: string]: string } = {};
+  @Input() backgroundColor: Colors = 'rose';
+  @Input() colorMapping: ColorMappingType = {};
 
   get shouldFlash(): boolean {
     return this.backgroundColor === 'darkerRed' && this.flash;

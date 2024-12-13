@@ -8,17 +8,13 @@ import { TimerControlsComponent } from './timer-controls/timer-controls.componen
 import { TimerDescriptionComponent } from './timer-description/timer-description.component';
 
 import { TimerDisplayComponent } from './timer-display/timer-display.component';
-
-type SpeechTypes =
-  | 'icebreaker'
-  | 'standard_speech'
-  | 'table_topics'
-  | 'speech_evaluation'
-  | 'general_evaluation'
-  | 'gramarian'
-  | '';
-
-type Colors = 'green' | 'yellow' | 'red' | 'darkRed' | 'darkerRed' | 'rose';
+import {
+  SpeechTypes,
+  Colors,
+  ColorMappingType,
+  TimeLeftType,
+  SpeechPresetsType,
+} from './types';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +33,7 @@ type Colors = 'green' | 'yellow' | 'red' | 'darkRed' | 'darkerRed' | 'rose';
 export class AppComponent {
   timer: number | undefined;
   seconds: number = 0;
-  userMinutes: number | null = null;
+  userMinutes: number | undefined = undefined;
   backgroundColor: Colors = 'rose';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
@@ -46,7 +42,7 @@ export class AppComponent {
   flash: boolean = true;
   wakeLock: any = null;
 
-  colorMapping: { [key in Colors]: string } = {
+  colorMapping: ColorMappingType = {
     green: 'var(--color-green)',
     yellow: 'var(--color-yellow)',
     red: 'var(--color-red)',
@@ -55,7 +51,7 @@ export class AppComponent {
     rose: 'var(--color-rose)',
   };
 
-  timeLeftSpeech: { [key: number]: Colors } = {
+  timeLeftSpeech: TimeLeftType = {
     150: 'green',
     90: 'yellow',
     30: 'red',
@@ -63,7 +59,7 @@ export class AppComponent {
     0: 'darkerRed',
   };
 
-  timeLeftTopics: { [key: number]: Colors } = {
+  timeLeftTopics: TimeLeftType = {
     90: 'green',
     60: 'yellow',
     30: 'red',
@@ -71,14 +67,14 @@ export class AppComponent {
     0: 'darkerRed',
   };
 
-  speechPresets: { [key in SpeechTypes]: number | null } = {
+  speechPresets: SpeechPresetsType = {
     icebreaker: 6,
     standard_speech: 7,
     table_topics: 2,
     speech_evaluation: 3,
     general_evaluation: 7,
     gramarian: 3,
-    '': null,
+    '': undefined,
   };
 
   startTimer() {
