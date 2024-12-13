@@ -2,8 +2,6 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { clearInterval, setInterval } from 'worker-timers';
 
-import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { TimerControlsComponent } from './timer-controls/timer-controls.component';
 import { TimerDescriptionComponent } from './timer-description/timer-description.component';
 
@@ -20,8 +18,6 @@ import {
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    FormsModule,
     CommonModule,
     TimerControlsComponent,
     TimerDisplayComponent,
@@ -40,7 +36,7 @@ export class AppComponent {
   selectedPreset: SpeechTypes = '';
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
-  wakeLock: any = null;
+  wakeLock: WakeLockSentinel | null = null;
 
   colorMapping: ColorMappingType = {
     green: 'var(--color-green)',
@@ -179,7 +175,7 @@ export class AppComponent {
     }
   }
 
-  stopWakeLock() {
+  async stopWakeLock() {
     if (this.wakeLock !== null) {
       this.wakeLock.release().then(() => {
         this.wakeLock = null;

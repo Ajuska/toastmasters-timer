@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CapitalizePipe } from '../capitalize.pipe';
-import { IntegerValidatorDirective } from '../integer-validator.directive';
-import { SpeechTypes, SpeechPresetsType } from '../types';
+import { CapitalizePipe } from '../utils/capitalize.pipe';
+import { IntegerValidatorDirective } from '../utils/integer-validator.directive';
 
+import { SpeechTypes, SpeechPresetsType } from '../types';
 @Component({
   selector: 'app-timer-controls',
   standalone: true,
   imports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
     CapitalizePipe,
     IntegerValidatorDirective,
   ],
