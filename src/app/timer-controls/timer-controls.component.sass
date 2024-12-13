@@ -1,0 +1,61 @@
+@import '../../styles'
+@import '../../_animations'
+
+.form
+  position: relative
+  display: flex
+  align-items: baseline
+  justify-content: space-between
+  gap: 1.1rem
+  margin-bottom: 0.5rem
+
+.form--group
+  display: flex
+  flex-direction: column
+  gap: 0.3rem
+  padding-bottom: 1.25rem
+
+.form--input
+  width: 100px
+
+.form--input--error
+  border-color: $red
+  color: $red
+
+.form--input--error:focus-visible
+  outline: auto
+
+.form--error
+  position: absolute
+  bottom: 0
+  color: $red
+
+.controls
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 0.67rem
+  margin-bottom: 1.8rem
+
+.controls--button
+  padding: 0.5rem 1rem
+  border: 1px solid transparent
+  border-radius: 0.7rem
+  background-color: $blue
+  cursor: pointer
+  font-weight: bold
+  text-align: center
+  transition: background-color 0.2s ease-in-out
+  font-size: 0.9rem
+
+  &:hover
+    background-color: lighten($blue, 8%)
+
+  &.secondary
+    background-color: darken($rose, 8%)
+    color: $black
+
+    &:hover
+      background-color: darken($rose, 6%)
+
+  &.full
+    grid-column: span 2

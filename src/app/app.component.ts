@@ -4,8 +4,10 @@ import { clearInterval, setInterval } from 'worker-timers';
 
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CapitalizePipe } from './capitalize.pipe';
-import { IntegerValidatorDirective } from './integer-validator.directive';
+import { TimerControlsComponent } from './timer-controls/timer-controls.component';
+import { TimerDescriptionComponent } from './timer-description/timer-description.component';
+
+import { TimerDisplayComponent } from './timer-display/timer-display.component';
 
 type SpeechTypes =
   | 'icebreaker'
@@ -25,8 +27,9 @@ type Colors = 'green' | 'yellow' | 'red' | 'darkRed' | 'darkerRed' | 'rose';
     RouterOutlet,
     FormsModule,
     CommonModule,
-    CapitalizePipe,
-    IntegerValidatorDirective,
+    TimerControlsComponent,
+    TimerDisplayComponent,
+    TimerDescriptionComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
@@ -78,10 +81,6 @@ export class AppComponent {
     '': null,
   };
 
-  get shouldFlash(): boolean {
-    return this.backgroundColor === 'darkerRed' && this.flash;
-  }
-
   startTimer() {
     this.isStartTimerTouched = true;
     if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
@@ -125,6 +124,7 @@ export class AppComponent {
     this.seconds = 0;
     this.backgroundColor = 'rose';
     this.flash = true;
+    this.stopWakeLock();
   }
 
   updateBackgroundColor() {
@@ -175,20 +175,6 @@ export class AppComponent {
   onTimeInputChange(): void {
     this.selectedPreset = '';
     this.resetTimer();
-  }
-
-  formatTime(seconds: number): string {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  }
-
-  getBoxShadow(): string {
-    if (!['darkRed', 'darkerRed'].includes(this.backgroundColor)) {
-      return '';
-    }
-
-    return `inset 0px 0px 0px 50px var(--color-black)`;
   }
 
   async startWakeLock() {

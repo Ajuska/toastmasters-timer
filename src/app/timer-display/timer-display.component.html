@@ -1,0 +1,11 @@
+<div
+  class="backdrop"
+  [ngClass]="{ flash: shouldFlash }"
+  [ngStyle]="{
+    'background-color': colorMapping[backgroundColor],
+    'box-shadow': getBoxShadow(),
+  }"
+></div>
+<p *ngIf="displaySeconds" class="timer">
+  {{ formatTime(seconds) }}
+</p>

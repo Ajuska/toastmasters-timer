@@ -18,117 +18,30 @@
         />
       </svg>
     </div>
-    <div>
-      <div class="form">
-        <div class="form--group">
-          <label for="userMinutes">Enter minutes</label>
-          <input
-            type="number"
-            placeholder="Minutes"
-            class="form--input"
-            [ngClass]="{
-              'form--input--error':
-                userMinutesInput.invalid && isStartTimerTouched
-            }"
-            [(ngModel)]="userMinutes"
-            #userMinutesInput="ngModel"
-            [disabled]="isDisabled"
-            (change)="onTimeInputChange()"
-            id="userMinutes"
-            min="1"
-            step="1"
-            required
-            appIntegerValidator
-          />
-        </div>
-        <small><i>OR</i></small>
-        <div class="form--group">
-          <label for="speechPreset">Select a preset</label>
-          <select
-            id="speechPreset"
-            [(ngModel)]="selectedPreset"
-            (change)="onPresetChange($event)"
-            [disabled]="isDisabled"
-          >
-            <option
-              *ngFor="let preset of speechPresets | keyvalue"
-              [value]="preset.key"
-            >
-              {{ preset.key | capitalize }}
-            </option>
-          </select>
-        </div>
-        <div
-          *ngIf="userMinutesInput.invalid && isStartTimerTouched"
-          class="form--error"
-        >
-          {{ userMinutesInput.errors?.['message']}}
-        </div>
-      </div>
-      <div class="controls">
-        <button (click)="startOrStopAction()" class="controls--button full">
-          {{ timer ? "Stop" : "Start" }} timer
-        </button>
-        <button (click)="resetTimer()" class="controls--button secondary">
-          Reset timer
-        </button>
-        <button (click)="toggleSeconds()" class="controls--button secondary">
-          {{ displaySeconds ? "Hide" : "Show" }} time
-        </button>
-      </div>
-    </div>
-    <p>
-      A simple tool for tracking time during speeches, evaluations or practice
-      sessions.
-    </p>
-    <h2>How to use</h2>
-    <p>
-      Enter the duration in minutes or select a preset to begin. Use the
-      <i>spacebar</i> or the start/stop button to control the timer and reset it
-      with the reset button or the <i>Esc</i> key.
-    </p>
-    <h2>Timing rules</h2>
-    <p>
-      There are two sets of rules. The first applies to table topics and the
-      second to speeches and evaluations:
-    </p>
-    <div class="rules">
-      <ul class="rules--column">
-        <li>1min</li>
-        <li>30s</li>
-        <li>0s</li>
-        <li>15s</li>
-        <li>30s</li>
-      </ul>
-      <ul class="rules--column">
-        <li>2min</li>
-        <li>1min</li>
-        <li>0s</li>
-        <li>15s</li>
-        <li>30s</li>
-      </ul>
-      <ul class="rules--column">
-        <li>left, green screen appears</li>
-        <li>left, yellow screen appears</li>
-        <li>left, red screen appears</li>
-        <li>over, black border appears</li>
-        <li>over, screen pulses</li>
-      </ul>
-    </div>
-    <p>Select "Table topics" preset for table topics rule to apply.</p>
+    <app-timer-controls
+      [isStartTimerTouched]="isStartTimerTouched"
+      [(userMinutes)]="userMinutes"
+      [isDisabled]="isDisabled"
+      [selectedPreset]="selectedPreset"
+      [speechPresets]="speechPresets"
+      [timer]="timer"
+      [displaySeconds]="displaySeconds"
+      (timeInputChange)="onTimeInputChange()"
+      (presetChange)="onPresetChange($event)"
+      (startOrStopAction)="startOrStopAction()"
+      (resetTimer)="resetTimer()"
+      (toggleSeconds)="toggleSeconds()"
+    ></app-timer-controls>
+    <app-timer-description />
   </div>
   <div class="content">
-    <div
-      class="backdrop"
-      [ngClass]="{ flash: shouldFlash }"
-      [ngStyle]="{
-        'background-color': colorMapping[backgroundColor],
-        'box-shadow': getBoxShadow(),
-      }"
-    ></div>
-    <p *ngIf="displaySeconds" class="timer">
-      {{ formatTime(seconds) }}
-    </p>
+    <app-timer-display
+      [seconds]="seconds"
+      [flash]="flash"
+      [displaySeconds]="displaySeconds"
+      [backgroundColor]="backgroundColor"
+      [colorMapping]="colorMapping"
+    ></app-timer-display>
   </div>
 </main>
 
