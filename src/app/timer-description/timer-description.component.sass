@@ -4,19 +4,17 @@
 
 .rules--column
   font-size: 0.9rem
-
-.description-toggle
   margin-bottom: 1rem
 
 .description-content
-  margin-bottom: 1rem
+  margin: 1rem 0
+  max-height: 1000px
+  overflow: hidden
+  transition: all 0.5s ease-in-out
+  opacity: 1
 
   &.hidden
-    display: none
-
-.mobile-only
-  display: none
-
-@media (max-width: 768px)
-  .mobile-only
-    display: block
+    margin: 0
+    max-height: 0
+    opacity: 0
+    pointer-events: none

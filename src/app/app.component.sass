@@ -28,6 +28,18 @@
 .svg-icon
   transition: fill 0.3s ease-in-out
 
+.description-toggle
+  cursor: pointer
+  font-size: 1.5rem
+  margin: 0 1rem
+  transition: color 0.2s ease-in-out
+
+  &:hover
+    color: lighten($black, 25%)
+
+.mobile-only
+  display: none
+
 @media (max-width: 768px)
   .main
     flex-direction: column
@@ -42,6 +54,12 @@
 
   .header
     flex-direction: row
+
+  .description-toggle
+    margin: 0 .5rem
+
+  .mobile-only
+    display: block
 
 @media (max-height: 420px)
   .sidebar

@@ -37,6 +37,7 @@ export class AppComponent {
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
   wakeLock: WakeLockSentinel | null = null;
+  isDescriptionHidden: boolean = true;
 
   colorMapping: ColorMappingType = {
     green: 'var(--color-green)',
@@ -183,6 +184,16 @@ export class AppComponent {
     }
   }
 
+  updateDescriptionVisibility() {
+    this.isDescriptionHidden = window.innerWidth <= 768;
+  }
+
+  toggleDescription() {
+    if (window.innerWidth <= 768) {
+      this.isDescriptionHidden = !this.isDescriptionHidden;
+    }
+  }
+
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === ' ') {
@@ -192,6 +203,15 @@ export class AppComponent {
       event.preventDefault();
       this.resetTimer();
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateDescriptionVisibility();
+  }
+
+  ngOnInit() {
+    this.updateDescriptionVisibility();
   }
 
   ngOnDestroy() {
