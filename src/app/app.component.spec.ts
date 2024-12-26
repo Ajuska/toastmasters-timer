@@ -81,10 +81,10 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     const resetSpy = spyOn(app, 'resetTimer');
-    const event = { target: { value: 'icebreaker' } } as unknown as Event;
+    const event = { target: { value: 'introduction' } } as unknown as Event;
     app.onPresetChange(event);
-    expect(app.selectedPreset).toBe('icebreaker');
-    expect(app.userMinutes).toBe(app.speechPresets['icebreaker']);
+    expect(app.selectedPreset).toBe('introduction');
+    expect(app.userMinutes).toBe(app.speechPresets['introduction']);
     expect(resetSpy).toHaveBeenCalled();
   });
 
@@ -93,7 +93,7 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     const resetSpy = spyOn(app, 'resetTimer');
     app.onTimeInputChange();
-    expect(app.selectedPreset).toBe('');
+    expect(app.selectedPreset).toBe('--- Select Preset ---');
     expect(resetSpy).toHaveBeenCalled();
   });
 

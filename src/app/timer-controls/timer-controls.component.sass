@@ -11,12 +11,13 @@
 
 .form--group
   display: flex
-  flex-direction: column
-  gap: 0.3rem
+  align-items: center
+  gap: 0.5rem
   padding-bottom: 1.25rem
 
 .form--input
-  max-width: 100px
+  flex: 1
+  max-width: 108px
 
 .form--input--error
   border-color: $red
@@ -72,3 +73,4 @@
 
   .form--input
     max-width: initial
+    min-width: 108px

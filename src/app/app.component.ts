@@ -33,7 +33,7 @@ export class AppComponent {
   backgroundColor: Colors = 'rose';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
-  selectedPreset: SpeechTypes = '';
+  selectedPreset: SpeechTypes = '--- Select Preset ---';
   isStartTimerTouched: boolean = false;
   flash: boolean = true;
   wakeLock: WakeLockSentinel | null = null;
@@ -67,7 +67,7 @@ export class AppComponent {
 
   speechPresets: SpeechPresetsType = {
     invocation: 2,
-    introduction_of_someone: 1,
+    introduction: 1,
     greeter: 2,
     speech_icebreaker: 6,
     speech_standard: 7,
@@ -76,11 +76,11 @@ export class AppComponent {
     evaluator_written: 1,
     evaluator_speech: 3,
     evaluator_general: 7,
-    evaluator_table_topics: 6,
+    evaluator_TT: 6,
     grammarian: 2,
     toastmaster: 3,
     timer: 1,
-    '': undefined,
+    '--- Select Preset ---': undefined,
   };
 
   startTimer() {
@@ -175,7 +175,7 @@ export class AppComponent {
   }
 
   onTimeInputChange(): void {
-    this.selectedPreset = '';
+    this.selectedPreset = '--- Select Preset ---';
     this.resetTimer();
   }
 

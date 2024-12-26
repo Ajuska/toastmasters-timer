@@ -1,9 +1,8 @@
 <div class="form">
   <div class="form--group">
-    <label for="userMinutes">Enter minutes</label>
     <input
       type="number"
-      placeholder="Minutes"
+      placeholder="Add Minutes"
       class="form--input"
       [ngClass]="{
         'form--input--error': userMinutesInput.invalid && isStartTimerTouched
@@ -18,10 +17,7 @@
       required
       appIntegerValidator
     />
-  </div>
-  <small><i>OR</i></small>
-  <div class="form--group">
-    <label for="speechPreset">Select a preset</label>
+    <small><i>OR</i></small>
     <select
       id="speechPreset"
       [(ngModel)]="selectedPreset"
@@ -34,8 +30,8 @@
       >
         {{ preset.key | capitalize }}
         <ng-container *ngIf="preset.value">
-          | {{ preset.value }}min</ng-container
-        >
+          | {{ preset.value }}min
+        </ng-container>
       </option>
     </select>
   </div>

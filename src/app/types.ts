@@ -1,6 +1,6 @@
 export type SpeechTypes =
   | 'invocation'
-  | 'introduction_of_someone'
+  | 'introduction'
   | 'greeter'
   | 'speech_icebreaker'
   | 'speech_standard'
@@ -9,11 +9,11 @@ export type SpeechTypes =
   | 'evaluator_written'
   | 'evaluator_speech'
   | 'evaluator_general'
-  | 'evaluator_table_topics'
+  | 'evaluator_TT'
   | 'grammarian'
   | 'toastmaster'
   | 'timer'
-  | '';
+  | '--- Select Preset ---';
 
 export type Colors =
   | 'green'

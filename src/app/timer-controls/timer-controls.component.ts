@@ -20,7 +20,7 @@ import { SpeechTypes, SpeechPresetsType } from '../types';
 export class TimerControlsComponent {
   @Input() userMinutes: number | undefined = undefined;
   @Input() isDisabled: boolean = false;
-  @Input() selectedPreset: SpeechTypes = '';
+  @Input() selectedPreset: SpeechTypes = '--- Select Preset ---';
   @Input() speechPresets: SpeechPresetsType = {};
   @Input() isStartTimerTouched: boolean = true;
   @Input() timer: number | undefined = undefined;
