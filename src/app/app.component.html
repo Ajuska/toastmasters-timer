@@ -45,7 +45,10 @@
       (resetTimer)="resetTimer()"
       (toggleSeconds)="toggleSeconds()"
     ></app-timer-controls>
-    <app-timer-description [isDescriptionHidden]="isDescriptionHidden" />
+    <app-timer-description
+      [isDescriptionHidden]="isDescriptionHidden"
+      [isMobile]="isMobile"
+    />
   </div>
   <div class="content">
     <app-timer-display

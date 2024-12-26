@@ -38,6 +38,7 @@ export class AppComponent {
   flash: boolean = true;
   wakeLock: WakeLockSentinel | null = null;
   isDescriptionHidden: boolean = true;
+  isMobile: boolean = false;
 
   colorMapping: ColorMappingType = {
     green: 'var(--color-green)',
@@ -185,6 +186,7 @@ export class AppComponent {
   }
 
   updateDescriptionVisibility() {
+    this.isMobile = /android|ipad|iphone/i.test(navigator.userAgent);
     this.isDescriptionHidden = window.innerWidth <= 768;
   }
 

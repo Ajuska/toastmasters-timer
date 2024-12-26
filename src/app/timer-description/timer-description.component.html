@@ -1,14 +1,22 @@
 <div class="description-content" [ngClass]="{ hidden: isDescriptionHidden }">
-  <p>
-    A simple tool for tracking time during speeches, evaluations or practice
-    sessions.
-  </p>
-  <h2>How to use</h2>
-  <p>
-    Enter the duration in minutes or select a preset to begin. Use the
-    <i>spacebar</i> or the start/stop button to control the timer and reset it
-    with the reset button or the <i>Esc</i> key.
-  </p>
+  <ng-container *ngIf="isMobile; else desktopContent">
+    <p>
+      A simple tool for tracking time during speeches, evaluations or practice
+      sessions. Enter the duration in minutes or select a preset to begin.
+    </p>
+  </ng-container>
+  <ng-template #desktopContent>
+    <p>
+      A simple tool for tracking time during speeches, evaluations or practice
+      sessions.
+    </p>
+    <h2>How to use</h2>
+    <p>
+      Enter the duration in minutes or select a preset to begin. Use the
+      <i>spacebar</i> or the start/stop button to control the timer and reset it
+      with the reset button or the <i>Esc</i> key.
+    </p>
+  </ng-template>
   <h2>Timing rules</h2>
   <p>
     There are two sets of rules. The first applies to table topics and the
@@ -37,5 +45,5 @@
       <li>over, screen pulses</li>
     </ul>
   </div>
-  <p>Select "Table topics" preset for table topics rule to apply.</p>
+  <p>Select <i>"Table topics"</i> preset for table topics rule to apply.</p>
 </div>
