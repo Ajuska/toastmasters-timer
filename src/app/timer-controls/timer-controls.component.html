@@ -33,6 +33,9 @@
         [value]="preset.key"
       >
         {{ preset.key | capitalize }}
+        <ng-container *ngIf="preset.value">
+          | {{ preset.value }}min</ng-container
+        >
       </option>
     </select>
   </div>

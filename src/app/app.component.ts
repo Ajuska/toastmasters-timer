@@ -66,12 +66,20 @@ export class AppComponent {
   };
 
   speechPresets: SpeechPresetsType = {
-    icebreaker: 6,
-    standard_speech: 7,
+    invocation: 2,
+    introduction_of_someone: 1,
+    greeter: 2,
+    speech_icebreaker: 6,
+    speech_standard: 7,
+    speech_longer: 15,
     table_topics: 2,
-    speech_evaluation: 3,
-    general_evaluation: 7,
-    gramarian: 3,
+    evaluator_written: 1,
+    evaluator_speech: 3,
+    evaluator_general: 7,
+    evaluator_table_topics: 6,
+    grammarian: 2,
+    toastmaster: 3,
+    timer: 1,
     '': undefined,
   };
 

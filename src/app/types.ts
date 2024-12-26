@@ -1,10 +1,18 @@
 export type SpeechTypes =
-  | 'icebreaker'
-  | 'standard_speech'
+  | 'invocation'
+  | 'introduction_of_someone'
+  | 'greeter'
+  | 'speech_icebreaker'
+  | 'speech_standard'
+  | 'speech_longer'
   | 'table_topics'
-  | 'speech_evaluation'
-  | 'general_evaluation'
-  | 'gramarian'
+  | 'evaluator_written'
+  | 'evaluator_speech'
+  | 'evaluator_general'
+  | 'evaluator_table_topics'
+  | 'grammarian'
+  | 'toastmaster'
+  | 'timer'
   | '';
 
 export type Colors =
