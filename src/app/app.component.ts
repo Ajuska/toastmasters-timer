@@ -195,8 +195,10 @@ export class AppComponent {
   }
 
   updateDescriptionVisibility() {
-    this.isMobile = /android|ipad|iphone/i.test(navigator.userAgent);
-    this.isDescriptionHidden = window.innerWidth <= BREAKPOINT_MEDIUM;
+    if (typeof navigator !== 'undefined' && typeof window !== 'undefined') {
+      this.isMobile = /android|ipad|iphone/i.test(navigator.userAgent);
+      this.isDescriptionHidden = window.innerWidth <= BREAKPOINT_MEDIUM;
+    }
   }
 
   toggleDescription() {
