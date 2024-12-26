@@ -85,7 +85,7 @@ export class AppComponent {
 
   startTimer() {
     this.isStartTimerTouched = true;
-    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
+    if (!this.userMinutes) {
       return;
     }
 
@@ -101,7 +101,7 @@ export class AppComponent {
   }
 
   stopTimer() {
-    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
+    if (!this.userMinutes) {
       return;
     }
     if (this.timer) {
@@ -130,7 +130,7 @@ export class AppComponent {
   }
 
   updateBackgroundColor() {
-    if (!this.userMinutes || !Number.isInteger(this.userMinutes)) {
+    if (!this.userMinutes) {
       return;
     }
 

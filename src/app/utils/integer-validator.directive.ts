@@ -26,8 +26,6 @@ export class IntegerValidatorDirective implements Validator {
       return { message: 'Please enter a number greater than 0.' };
     } else if (value < 0) {
       return { message: 'Please enter a positive number.' };
-    } else if (!Number.isInteger(value)) {
-      return { message: 'Please enter a round number.' };
     }
     return null;
   }
