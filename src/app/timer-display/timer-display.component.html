@@ -5,6 +5,8 @@
     'background-color': colorMapping[backgroundColor],
     'box-shadow': getBoxShadow(),
   }"
+  aria-live="polite"
+  [attr.aria-label]="getAriaLabel()"
 ></div>
 <p *ngIf="displaySeconds" class="timer">
   {{ formatTime(seconds) }}

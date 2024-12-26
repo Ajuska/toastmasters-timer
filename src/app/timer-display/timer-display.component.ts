@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Colors, ColorMappingType } from '../types';
+
 @Component({
   selector: 'app-timer-display',
   standalone: true,
@@ -32,5 +33,17 @@ export class TimerDisplayComponent {
     }
 
     return `inset 0px 0px 0px ${borderWidth}px var(--color-black)`;
+  }
+
+  getAriaLabel(): string {
+    const resultsMap: { [key in Colors]: string } = {
+      rose: 'good',
+      green: 'good',
+      yellow: 'warning',
+      red: "time's up",
+      darkRed: 'almost disqualified',
+      darkerRed: 'disqualified',
+    };
+    return `Speech status: ${resultsMap[this.backgroundColor]}`;
   }
 }
