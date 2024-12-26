@@ -16,7 +16,7 @@
   padding-bottom: 1.25rem
 
 .form--input
-  width: 100px
+  max-width: 100px
 
 .form--input--error
   border-color: $red
@@ -59,3 +59,16 @@
 
   &.full
     grid-column: span 2
+
+@media (max-width: 768px)
+  .controls
+    grid-template-columns: repeat(4, 1fr)
+
+  .form
+    gap: 0.6rem
+
+  .form--group
+    width: 100%
+
+  .form--input
+    max-width: initial

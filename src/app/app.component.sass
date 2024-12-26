@@ -23,6 +23,29 @@
 .content
   flex-grow: 1
   position: relative
+  min-height: 200px
 
 .svg-icon
   transition: fill 0.3s ease-in-out
+
+@media (max-width: 768px)
+  .main
+    flex-direction: column
+    height: 100vh
+
+  .sidebar
+    width: auto
+    height: auto
+    border-right: none
+    border-bottom: 1px solid darken($rose, 10%)
+    padding: 1rem
+
+  .header
+    flex-direction: row
+
+@media (max-height: 420px)
+  .sidebar
+    height: fit-content
+
+  .content
+    height: 100vh

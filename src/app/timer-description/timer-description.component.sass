@@ -1,5 +1,22 @@
+@import '../../styles'
 .rules
   display: flex
 
 .rules--column
   font-size: 0.9rem
+
+.description-toggle
+  margin-bottom: 1rem
+
+.description-content
+  margin-bottom: 1rem
+
+  &.hidden
+    display: none
+
+.mobile-only
+  display: none
+
+@media (max-width: 768px)
+  .mobile-only
+    display: block

@@ -26,10 +26,11 @@ export class TimerDisplayComponent {
   }
 
   getBoxShadow(): string {
+    const borderWidth = window.innerWidth <= 768 ? 35 : 50;
     if (!['darkRed', 'darkerRed'].includes(this.backgroundColor)) {
       return '';
     }
 
-    return `inset 0px 0px 0px 50px var(--color-black)`;
+    return `inset 0px 0px 0px ${borderWidth}px var(--color-black)`;
   }
 }

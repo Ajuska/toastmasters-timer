@@ -1,41 +1,46 @@
-<div>
-  <p>
-    A simple tool for tracking time during speeches, evaluations or practice
-    sessions.
-  </p>
-  <h2>How to use</h2>
-  <p>
-    Enter the duration in minutes or select a preset to begin. Use the
-    <i>spacebar</i> or the start/stop button to control the timer and reset it
-    with the reset button or the <i>Esc</i> key.
-  </p>
-  <h2>Timing rules</h2>
-  <p>
-    There are two sets of rules. The first applies to table topics and the
-    second to speeches and evaluations:
-  </p>
-  <div class="rules">
-    <ul class="rules--column">
-      <li>1min</li>
-      <li>30s</li>
-      <li>0s</li>
-      <li>15s</li>
-      <li>30s</li>
-    </ul>
-    <ul class="rules--column">
-      <li>2min</li>
-      <li>1min</li>
-      <li>0s</li>
-      <li>15s</li>
-      <li>30s</li>
-    </ul>
-    <ul class="rules--column">
-      <li>left, green screen appears</li>
-      <li>left, yellow screen appears</li>
-      <li>left, red screen appears</li>
-      <li>over, black border appears</li>
-      <li>over, screen pulses</li>
-    </ul>
+<button (click)="toggleDescription()" class="description-toggle mobile-only">
+  Toggle Description
+</button>
+<div class="description-content" [ngClass]="{ hidden: isDescriptionHidden }">
+  <div>
+    <p>
+      A simple tool for tracking time during speeches, evaluations or practice
+      sessions.
+    </p>
+    <h2>How to use</h2>
+    <p>
+      Enter the duration in minutes or select a preset to begin. Use the
+      <i>spacebar</i> or the start/stop button to control the timer and reset it
+      with the reset button or the <i>Esc</i> key.
+    </p>
+    <h2>Timing rules</h2>
+    <p>
+      There are two sets of rules. The first applies to table topics and the
+      second to speeches and evaluations:
+    </p>
+    <div class="rules">
+      <ul class="rules--column">
+        <li>1min</li>
+        <li>30s</li>
+        <li>0s</li>
+        <li>15s</li>
+        <li>30s</li>
+      </ul>
+      <ul class="rules--column">
+        <li>2min</li>
+        <li>1min</li>
+        <li>0s</li>
+        <li>15s</li>
+        <li>30s</li>
+      </ul>
+      <ul class="rules--column">
+        <li>left, green screen appears</li>
+        <li>left, yellow screen appears</li>
+        <li>left, red screen appears</li>
+        <li>over, black border appears</li>
+        <li>over, screen pulses</li>
+      </ul>
+    </div>
+    <p>Select "Table topics" preset for table topics rule to apply.</p>
   </div>
-  <p>Select "Table topics" preset for table topics rule to apply.</p>
 </div>
