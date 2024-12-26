@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { clearInterval, setInterval } from 'worker-timers';
+import { BREAKPOINT_MEDIUM } from '../constants';
 
 import { TimerControlsComponent } from './timer-controls/timer-controls.component';
 import { TimerDescriptionComponent } from './timer-description/timer-description.component';
@@ -195,11 +196,11 @@ export class AppComponent {
 
   updateDescriptionVisibility() {
     this.isMobile = /android|ipad|iphone/i.test(navigator.userAgent);
-    this.isDescriptionHidden = window.innerWidth <= 768;
+    this.isDescriptionHidden = window.innerWidth <= BREAKPOINT_MEDIUM;
   }
 
   toggleDescription() {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= BREAKPOINT_MEDIUM) {
       this.isDescriptionHidden = !this.isDescriptionHidden;
     }
   }

@@ -1,4 +1,6 @@
 @import '../../_animations'
+@import '../../_mixins'
+
 
 .backdrop
   width: 100%
@@ -14,10 +16,9 @@
   font-size: 12rem
   margin: 0
 
-@media (max-width: 1024px)
-  .timer
+  @include respond-to('large')
     font-size: 8rem
 
-@media (max-width: 768px)
-  .timer
+  @include respond-to('medium')
     font-size: 6rem
+

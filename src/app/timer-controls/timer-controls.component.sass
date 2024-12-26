@@ -1,5 +1,6 @@
 @import '../../styles'
 @import '../../_animations'
+@import '../../_mixins'
 
 .form
   position: relative
@@ -9,15 +10,26 @@
   gap: 1.1rem
   margin-bottom: 0.5rem
 
+  @include respond-to('medium')
+    gap: 0.6rem
+
+
 .form--group
   display: flex
   align-items: center
   gap: 0.5rem
   padding-bottom: 1.25rem
 
+  @include respond-to('medium')
+    width: 100%
+
 .form--input
   flex: 1
   max-width: 108px
+
+  @include respond-to('medium')
+    max-width: initial
+    min-width: 108px
 
 .form--input--error
   border-color: $red
@@ -36,6 +48,10 @@
   grid-template-columns: repeat(2, 1fr)
   gap: 0.67rem
   margin-bottom: .8rem
+
+  @include respond-to('medium')
+    grid-template-columns: repeat(4, 1fr)
+
 
 .controls--button
   padding: 0.5rem 1rem
@@ -60,17 +76,3 @@
 
   &.full
     grid-column: span 2
-
-@media (max-width: 768px)
-  .controls
-    grid-template-columns: repeat(4, 1fr)
-
-  .form
-    gap: 0.6rem
-
-  .form--group
-    width: 100%
-
-  .form--input
-    max-width: initial
-    min-width: 108px

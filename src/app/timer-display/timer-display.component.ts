@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Colors, ColorMappingType } from '../types';
+import { BREAKPOINT_MEDIUM } from '../../constants';
 
 @Component({
   selector: 'app-timer-display',
@@ -27,7 +28,7 @@ export class TimerDisplayComponent {
   }
 
   getBoxShadow(): string {
-    const borderWidth = window.innerWidth <= 768 ? 35 : 50;
+    const borderWidth = window.innerWidth <= BREAKPOINT_MEDIUM ? 35 : 50;
     if (!['darkRed', 'darkerRed'].includes(this.backgroundColor)) {
       return '';
     }

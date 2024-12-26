@@ -1,9 +1,15 @@
 @import '../styles'
 @import '../_animations'
+@import '../_mixins'
+
 
 .main
   display: flex
   background-color: $rose
+
+  @include respond-to('medium')
+    flex-direction: column
+    height: 100vh
 
 .sidebar
   width: 320px
@@ -15,15 +21,31 @@
   flex-direction: column
   font-size: 0.9rem
 
+  @include respond-to('medium')
+    width: auto
+    height: auto
+    border-right: none
+    border-bottom: 1px solid darken($rose, 10%)
+    padding: 1rem
+
+  @include respond-to('small-height')
+    height: fit-content
+
 .header
   display: flex
   justify-content: space-between
   align-items: center
 
+  @include respond-to('medium')
+    flex-direction: row
+
 .content
   flex-grow: 1
   position: relative
   min-height: 200px
+
+  @include respond-to('small-height')
+    height: 100vh
 
 .svg-icon
   transition: fill 0.3s ease-in-out
@@ -33,6 +55,9 @@
   border: none
   padding: 0
   margin: 0 1rem
+
+  @include respond-to('medium')
+    margin: 0 .5rem
 
 .description-toggle--icon
   transition: color 0.2s ease-in-out
@@ -44,30 +69,5 @@
 .mobile-only
   display: none
 
-@media (max-width: 768px)
-  .main
-    flex-direction: column
-    height: 100vh
-
-  .sidebar
-    width: auto
-    height: auto
-    border-right: none
-    border-bottom: 1px solid darken($rose, 10%)
-    padding: 1rem
-
-  .header
-    flex-direction: row
-
-  .description-toggle
-    margin: 0 .5rem
-
-  .mobile-only
+  @include respond-to('medium')
     display: inherit
-
-@media (max-height: 420px)
-  .sidebar
-    height: fit-content
-
-  .content
-    height: 100vh
