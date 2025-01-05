@@ -12,7 +12,7 @@
     height: 100vh
 
 .sidebar
-  width: 320px
+  max-width: min-content
   padding: 0rem 1rem
   background-color: darken($rose, 1%)
   border-right: 1px solid darken($rose, 10%)
@@ -27,6 +27,7 @@
     border-right: none
     border-bottom: 1px solid darken($rose, 10%)
     padding: 1rem
+    max-width: fit-content
 
   @include respond-to('small-height')
     height: fit-content
