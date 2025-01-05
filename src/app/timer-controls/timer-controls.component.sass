@@ -29,7 +29,7 @@
 
   @include respond-to('medium')
     max-width: initial
-    min-width: 108px
+    min-width: 90px
 
 .form--input--error
   border-color: $red
@@ -50,11 +50,11 @@
   margin-bottom: .8rem
 
   @include respond-to('medium')
-    grid-template-columns: repeat(4, 1fr)
+    grid-template-columns: repeat(3, 1fr)
 
 
 .controls--button
-  padding: 0.5rem 1rem
+  padding: 0.7rem 1.1rem
   border: 1px solid transparent
   border-radius: 0.7rem
   background-color: $blue
@@ -62,8 +62,10 @@
   font-weight: bold
   text-align: center
   transition: background-color 0.2s ease-in-out
-  font-size: 0.9rem
+  font-size: 1rem
   color: $black
+  @include respond-to('medium')
+       padding: 1rem
 
   &:hover
     background-color: lighten($blue, 8%)
@@ -76,3 +78,5 @@
 
   &.full
     grid-column: span 2
+    @include respond-to('medium')
+      grid-column: 1
