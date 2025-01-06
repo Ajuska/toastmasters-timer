@@ -9,14 +9,14 @@
 
   @include respond-to('medium')
     flex-direction: column
-    height: 100vh
+    height: calc(100vh - 2.5rem)
 
 .sidebar
   max-width: min-content
   padding: 0rem 1rem
   background-color: darken($rose, 1%)
   border-right: 1px solid darken($rose, 10%)
-  height: 100vh
+  height: calc(100vh - 2.5rem)
   display: flex
   flex-direction: column
   font-size: 0.9rem
@@ -46,7 +46,7 @@
   min-height: 200px
 
   @include respond-to('small-height')
-    height: 100vh
+    height: calc(100vh - 2.5rem)
 
 .svg-icon
   transition: fill 0.3s ease-in-out
