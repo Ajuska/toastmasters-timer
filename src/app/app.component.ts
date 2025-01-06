@@ -30,7 +30,7 @@ import {
 export class AppComponent {
   timer: number | undefined;
   seconds: number = 0;
-  userMinutes: number | undefined = undefined;
+  userMinutes: number | undefined | string = undefined;
   backgroundColor: Colors = 'rose';
   isDisabled: boolean = false;
   displaySeconds: boolean = true;
@@ -136,10 +136,11 @@ export class AppComponent {
     }
 
     // add 30s to keep the number positive in 'time left' rules
-    const totalSeconds = this.userMinutes * 60 + 30;
+    const minutes = parseFloat(this.userMinutes?.toString());
+    const totalSeconds = minutes * 60 + 30;
     const remainingSeconds = totalSeconds - this.seconds;
 
-    if (this.userMinutes <= 0) {
+    if (minutes <= 0) {
       this.stopTimer();
       this.seconds = 0;
       this.backgroundColor = 'rose';
