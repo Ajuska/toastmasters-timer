@@ -6,7 +6,8 @@
       placeholder="Minutes"
       class="form--input"
       [ngClass]="{
-        'form--input--error': userMinutesInput.invalid && isStartTimerTouched
+        'form--input--error':
+          userMinutesInput.invalid && userMinutesInput.touched
       }"
       [(ngModel)]="userMinutes"
       #userMinutesInput="ngModel"
@@ -37,14 +38,21 @@
     </select>
   </div>
   <div
-    *ngIf="userMinutesInput.invalid && isStartTimerTouched"
+    *ngIf="
+      (userMinutesInput.invalid && userMinutesInput.touched) ||
+      isStartTimerTouched
+    "
     class="form--error"
   >
     {{ userMinutesInput.errors?.['message']}}
   </div>
 </div>
 <div class="controls">
-  <button (click)="startOrStopAction.emit()" class="controls--button full">
+  <button
+    (click)="startOrStopAction.emit()"
+    class="controls--button full"
+    [disabled]="userMinutesInput.invalid && userMinutesInput.touched"
+  >
     {{ timer ? "Stop" : "Start" }}
   </button>
   <button (click)="resetTimer.emit()" class="controls--button secondary">

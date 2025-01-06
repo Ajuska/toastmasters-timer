@@ -65,7 +65,7 @@
   font-size: 1rem
   color: $black
   @include respond-to('medium')
-       padding: 1rem
+       padding: 1rem 0.7rem
 
   &:hover
     background-color: lighten($blue, 8%)
@@ -80,3 +80,8 @@
     grid-column: span 2
     @include respond-to('medium')
       grid-column: 1
+
+  &:disabled
+    background-color: $gray
+    cursor: not-allowed
+    color: $gray-light

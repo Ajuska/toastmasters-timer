@@ -210,7 +210,14 @@ export class AppComponent {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === ' ') {
+    const userMinutesInput = document.getElementById(
+      'userMinutes'
+    ) as HTMLInputElement;
+    const isInvalid =
+      userMinutesInput?.classList.contains('ng-invalid') &&
+      userMinutesInput?.classList.contains('ng-touched');
+
+    if (event.key === ' ' && !isInvalid) {
       event.preventDefault();
       this.startOrStopAction();
     } else if (event.key === 'Escape') {
