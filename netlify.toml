@@ -2,7 +2,7 @@
   for = "/*"
   [headers.values]
     Referrer-Policy = "no-referrer"
-    Permissions-Policy = "camera=(), geolocation=(), microphone=(), autoplay=(), fullscreen=(), picture-in-picture=(), sync-xhr=(), encrypted-media=(), oversized-images=()"
+    Permissions-Policy = "camera=(), geolocation=(), microphone=(), autoplay=(), fullscreen=(), picture-in-picture=(), sync-xhr=(), encrypted-media=()"
     Strict-Transport-Security = "max-age=15768000; includeSubdomains; preload"
     X-Frame-Options = "DENY"
     X-Xss-Protection = "1; mode=block"
