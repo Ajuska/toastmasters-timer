@@ -6,7 +6,7 @@
         <button
           class="description-toggle mobile-only"
           (click)="toggleDescription()"
-          aria-hidden="true"
+          [attr.inert]="isMobile ? true : null"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
